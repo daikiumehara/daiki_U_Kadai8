@@ -11,8 +11,11 @@ import UIKit
 class SliderTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let firstVC = SliderViewController.instantiate(SliderPresenter(), #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1))
-        let secondVC = SliderViewController.instantiate(SliderPresenter(), #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1))
+
+        let model = ModelLocator.shared.valueModel
+
+        let firstVC = SliderViewController.instantiate(SliderPresenter(model: model), #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1))
+        let secondVC = SliderViewController.instantiate(SliderPresenter(model: model), #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1))
         self.viewControllers = [firstVC, secondVC]
     }
 }

@@ -7,26 +7,36 @@
 
 import Foundation
 
-protocol Presenter: AnyObject {
-    func setView(_ view: View)
-    func setSliderValue(_ value: Float)
-    func updateView()
+protocol SliderPresenterProtocol: AnyObject {
+    func setView(_ view: SliderView)
+    func didChangeSliderValue(_ value: Float)
+    func viewWillAppear()
+    func viewDidLoad()
 }
 
-class SliderPresenter: Presenter {
-    private weak var view: View!
-    private let model = SliderModel.shered
+class SliderPresenter: SliderPresenterProtocol {
+    private weak var view: SliderView!
+    private let model: ValueModel
+
+    init(model: ValueModel) {
+        self.model = model
+    }
     
-    func setView(_ view: View) {
+    func setView(_ view: SliderView) {
         self.view = view
-        view.setRangeAndValue(range: model.sliderRange, value: model.value)
     }
 
-    func setSliderValue(_ value: Float) {
+    func didChangeSliderValue(_ value: Float) {
         model.changeValue(value)
+        view.updateValue(value)
     }
 
-    func updateView() {
-        self.view.updateView(model.value)
+    func viewWillAppear() {
+        view.updateValue(model.value)
+    }
+
+    func viewDidLoad() {
+        view.updateValueSliderRange(range: model.sliderRange)
+        view.setRangeAndValue(range: model.sliderRange, value: model.value)
     }
 }
