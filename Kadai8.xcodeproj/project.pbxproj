@@ -15,10 +15,11 @@
 		A6471FE426996FF300F1CBC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6471FE226996FF300F1CBC8 /* LaunchScreen.storyboard */; };
 		A6471FEF26996FF300F1CBC8 /* Kadai8Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6471FEE26996FF300F1CBC8 /* Kadai8Tests.swift */; };
 		A6471FFA26996FF300F1CBC8 /* Kadai8UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6471FF926996FF300F1CBC8 /* Kadai8UITests.swift */; };
-		A647200B269970DC00F1CBC8 /* SliderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A647200A269970DC00F1CBC8 /* SliderModel.swift */; };
+		A647200B269970DC00F1CBC8 /* ValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A647200A269970DC00F1CBC8 /* ValueModel.swift */; };
 		A647200F269976B700F1CBC8 /* SliderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A647200E269976B700F1CBC8 /* SliderPresenter.swift */; };
 		A647201126997C3A00F1CBC8 /* SliderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A647201026997C3A00F1CBC8 /* SliderViewController.storyboard */; };
 		A647201526997CBD00F1CBC8 /* SliderTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A647201426997CBD00F1CBC8 /* SliderTabBarController.swift */; };
+		E583F304269A4D2200B1BC64 /* ModelLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E583F303269A4D2200B1BC64 /* ModelLocator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +54,11 @@
 		A6471FF526996FF300F1CBC8 /* Kadai8UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kadai8UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6471FF926996FF300F1CBC8 /* Kadai8UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kadai8UITests.swift; sourceTree = "<group>"; };
 		A6471FFB26996FF300F1CBC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A647200A269970DC00F1CBC8 /* SliderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderModel.swift; sourceTree = "<group>"; };
+		A647200A269970DC00F1CBC8 /* ValueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueModel.swift; sourceTree = "<group>"; };
 		A647200E269976B700F1CBC8 /* SliderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderPresenter.swift; sourceTree = "<group>"; };
 		A647201026997C3A00F1CBC8 /* SliderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SliderViewController.storyboard; sourceTree = "<group>"; };
 		A647201426997CBD00F1CBC8 /* SliderTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTabBarController.swift; sourceTree = "<group>"; };
+		E583F303269A4D2200B1BC64 /* ModelLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLocator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +161,8 @@
 		A64720092699706400F1CBC8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A647200A269970DC00F1CBC8 /* SliderModel.swift */,
+				A647200A269970DC00F1CBC8 /* ValueModel.swift */,
+				E583F303269A4D2200B1BC64 /* ModelLocator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,11 +299,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A647201526997CBD00F1CBC8 /* SliderTabBarController.swift in Sources */,
-				A647200B269970DC00F1CBC8 /* SliderModel.swift in Sources */,
+				A647200B269970DC00F1CBC8 /* ValueModel.swift in Sources */,
 				A6471FDC26996FF000F1CBC8 /* SliderViewController.swift in Sources */,
 				A647200F269976B700F1CBC8 /* SliderPresenter.swift in Sources */,
 				A6471FD826996FF000F1CBC8 /* AppDelegate.swift in Sources */,
 				A6471FDA26996FF000F1CBC8 /* SceneDelegate.swift in Sources */,
+				E583F304269A4D2200B1BC64 /* ModelLocator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

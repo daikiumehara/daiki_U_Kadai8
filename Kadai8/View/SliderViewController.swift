@@ -7,35 +7,29 @@
 
 import UIKit
 
-protocol View: AnyObject {
-    func setPresenter(_ presenter: Presenter)
+protocol SliderView: AnyObject {
     func setRangeAndValue(range: ClosedRange<Float>, value: Float)
-    func updateView(_ value: Float)
+    func updateValue(_ value: Float)
+    func updateValueSliderRange(range: ClosedRange<Float>)
 }
 
-class SliderViewController: UIViewController, View {
+class SliderViewController: UIViewController, SliderView {
     @IBOutlet private var valueLabel: UILabel!
     @IBOutlet private var valueSlider: UISlider!
     private var backgroundColor: UIColor!
-    private var presenter: Presenter!
+    private var presenter: SliderPresenterProtocol!
     private var range: ClosedRange<Float>!
     private var initialValue: Float!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = backgroundColor
-        self.valueSlider.maximumValue = range.upperBound
-        self.valueSlider.minimumValue = range.lowerBound
+        view.backgroundColor = backgroundColor
+        presenter.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        showView()
-    }
-
-    func setPresenter(_ presenter: Presenter) {
-        self.presenter = presenter
-        presenter.setView(self)
+        presenter.viewWillAppear()
     }
 
     func setRangeAndValue(range: ClosedRange<Float>, value: Float) {
@@ -43,27 +37,29 @@ class SliderViewController: UIViewController, View {
         self.initialValue = value
     }
 
-    func showView() {
-        self.presenter.updateView()
+    func updateValue(_ value: Float) {
+        valueSlider.setValue(value, animated: false)
+        valueLabel.text = String(value)
     }
 
-    func updateView(_ value: Float) {
-        self.valueSlider?.setValue(value, animated: false)
-        self.valueLabel?.text = String(value)
-    }
-
-    static func instantiate(_ presenter: Presenter, _ color: UIColor) -> SliderViewController {
-        guard let vc = UIStoryboard.init(name: "SliderViewController", bundle: nil).instantiateInitialViewController() as? SliderViewController else {
+    static func instantiate(_ presenter: SliderPresenterProtocol, _ color: UIColor) -> SliderViewController {
+        guard let vc = UIStoryboard(name: "SliderViewController", bundle: nil).instantiateInitialViewController() as? SliderViewController else {
             fatalError("ViewControllerが見つかりません")
         }
-        vc.setPresenter(presenter)
+
+        vc.presenter = presenter
+        presenter.setView(vc)
         vc.backgroundColor = color
+
         return vc
     }
 
     @IBAction func didChangeSliderValue(_ sender: Any) {
-        presenter.setSliderValue(valueSlider.value)
-        self.valueLabel.text = String(valueSlider.value)
+        presenter.didChangeSliderValue(valueSlider.value)
+    }
+
+    func updateValueSliderRange(range: ClosedRange<Float>) {
+        valueSlider.maximumValue = range.upperBound
+        valueSlider.minimumValue = range.lowerBound
     }
 }
-
